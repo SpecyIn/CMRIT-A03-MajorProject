@@ -94,7 +94,7 @@ def user_feedback(request):
             se = 'negative'
         else:
             se = 'nutral'
-        Userfeedback_Model.objects.create(uregsid=userObj,name=name,branches=branches,rating=rating,mobilenumber=mobilenumber,sentiment=se ,topics=result, feedback=twt, )
+        Userfeedback_Model.objects.create(uregsid=userObj,name=name,branches=branches,rating=rating,mobilenumber=mobilenumber,sentiment=se ,topics=result, feedback=twt,emailid=emailid, )
     obj = Userfeedback_Model.objects.all()
 
 

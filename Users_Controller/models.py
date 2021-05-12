@@ -33,4 +33,3 @@ class Userfeedback_Model(models.Model):
     sentiment = models.CharField(max_length=300)
     topics = models.CharField(max_length=200)
     feedback = models.CharField(max_length=300)
-
