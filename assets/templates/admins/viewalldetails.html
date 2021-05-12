@@ -1,0 +1,137 @@
+{% extends 'admins/base1.html' %}
+{% block adminblock %}
+{% load staticfiles %}
+        <style>
+table { 
+	width: 80%; 
+	border-collapse: collapse; 
+	margin:50px auto;
+	}
+
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+	background: #eee; 
+	}
+tr:nth-of-type(even) { 
+	background: #eee; 
+	}
+th { 
+	background: #3498db; 
+	color: white; 
+	font-weight: bold; 
+	}
+
+td, th { 
+	padding: 10px; 
+	border: 1px solid #ccc; 
+	text-align: left; 
+	font-size: 15px;
+	}
+
+/* 
+Max width before this PARTICULAR table gets nasty
+This query will take effect for any screen smaller than 760px
+and also iPads specifically.
+*/
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+	table { 
+	  	width: 100%; 
+	}
+
+	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+	
+	td { 
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%; 
+	}
+
+	td:before { 
+		/* Now like a table header */
+		position: absolute;
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+		/* Label the data */
+		content: attr(data-column);
+
+		color: #000;
+		font-weight: bold;
+	}
+
+}
+        .imgo{
+background: url("{% static 'admin.jpeg' %}");
+background-size:100% 100%;
+position: absolute;
+    margin-top: 10px;
+    top: auto;
+    margin-left: 0px;
+    width: 99%;
+    text-align: center;
+    height: 80%;
+    overflow: auto;
+    }
+    .fix{
+
+    }
+	
+</style>
+</head>
+<body>
+ <form method="POST">
+        {% csrf_token %}
+        <div class="imgo">
+        <table id="myTable">
+
+            <tr class="fix">
+                <th>USERNAME</th>
+                <th>BRANCH</th>
+                <th>NO OF WATERCANES</th>
+                <th>NO OF LITER</th>
+                <th>AMOUNT</th>
+                <th>WHICH PERSON DELIVERD</th>
+                <th>RECEIPT</th>
+                <th>BOOKING DATE</th>
+                <th>DELIVERY DATE</th>
+            </tr>
+
+            {% for v in objes %}
+            <tr>
+                <td>{{v.uregid.name}}</td>
+                <td>{{v.branch}}</td>
+                <td>{{v.now}}</td>
+                <td>{{v.nol}}</td>
+                <td>{{v.amount}}</td>
+                <td>{{v.wpd}}</td>
+                <td>{{v.receipt}}</td>
+                <td>{{v.bookdate}}</td>
+                <td>{{v.deliverydate}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+            </div>
+    </form>
+{{name}}
+</body>
+{% endblock %}
