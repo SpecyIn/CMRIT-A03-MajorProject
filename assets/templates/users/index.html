@@ -1,170 +1,257 @@
-<!DOCTYPE html>
-{% load staticfiles %}
+<!doctype html>
 <html lang="en">
-<title>Water Consumption</title>
+<head>
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-  
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
-<style>
-html,body,h1,h2,h3,h4,h5,h6 {font-family: "Poppins", Sans-serif; color : #565656;, font-size: 16px}
-.w3-sidebar {
-  z-index: 3;
-  width: 250px;
-  top: 43px;
-  bottom: 0;
-  height: inherit;
-}
-.water6
-{
-background: url("{% static 'water.jpg' %}");
-        background-size: 100% 100%;
-        }
-.water5{
-background: url("{% static 'water5.png' %}");
-        background-size: 100% 100%;
-        height: 200px;
+    <!--====== Required meta tags ======-->
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        }
-        .water1{
-background: url("{% static 'water1.jpg' %}");
-        background-size: 100% 100%;
-        height: 200px;
+    <!--====== Title ======-->
+    <title>Water Consumption </title>
 
-        }
-        .water2{
-background: url("{% static 'water3.jpg' %}");
-        background-size: 100% 100%;
-        height: 200px;
+    <!--====== Favicon Icon ======-->
+    <link rel="shortcut icon" href="https://specy.in/prj/assets/images/favicon.png" type="image/png">
 
-        }.water3{
-background: url("{% static 'water0.jpg' %}");
-        background-size: 100% 100%;
-        height: 200px;
+    <!--====== Bootstrap css ======-->
+    <link rel="stylesheet" href="https://specy.in/prj/assets/css/bootstrap.min.css">
 
-        }.water4{
-background: url("{% static 'water4.jpg' %}");
-        background-size: 100% 100%;
-        height: 200px;
+    <!--====== Line Icons css ======-->
+    <link rel="stylesheet" href="https://specy.in/prj/assets/css/LineIcons.css">
 
-        }
+    <!--====== Magnific Popup css ======-->
+    <link rel="stylesheet" href="https://specy.in/prj/assets/css/magnific-popup.css">
 
-</style>
+    <!--====== Default css ======-->
+    <link rel="stylesheet" href="https://specy.in/prj/assets/css/default.css">
+
+    <!--====== Style css ======-->
+    <link rel="stylesheet" href="https://specy.in/prj/assets/css/style.css">
+
+
+</head>
+
 <body>
 
-<!-- Navbar -->
-<div class="w3-top">
-  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
-    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
-    <a href="#" class="w3-bar-item w3-button w3-theme-l1">HOME</a>
+    <!--====== PRELOADER PART START ======-->
 
-  </div>
-</div>
-
-<!-- Sidebar -->
-<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
-  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
-    <i class="fa fa-remove"></i>
-  </a>
-  <h4 class="w3-bar-item"><b>Menu</b></h4>
-  <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'user_logins' %}">USERS LOGIN</a>
-    <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'user_registers' %}">USERS REGISTRATIONS</a>
-  <a class="w3-bar-item w3-button w3-hover-black" href="{% url 'admin_login' %}">ADMIN LOGIN</a>
-
-
-</nav>
-
-<!-- Overlay effect when opening sidebar on small screens -->
-<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
-
-<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
-<div class="w3-main" style="margin-left:250px">
-
-  <div class="w3-row w3-padding-64">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal" style="font-family:Aldrich">WATER CONSUMPTION</h1>
-      <p style="font-family:Aldrich">Water is an essential element for the uses of households,indu try, and agriculture. Jordan, as several other countries in the  world, suffers from water scarcity, which poses a threat that would affect all sectors that depend on the availability of water for the sustainability of activities for their development and
-prosperity </p>
-    </div>
-    <div class="w3-third w3-container">
-      <p class="water1"></p>
-      <p class="water 2"></p>
-    </div>
-  </div>
-
-  <div class="w3-row">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal" style="font-family:Aldrich">SAVE WATER</h1>
-      <p style="font-family:Aldrich">There are two ways in which we can classify our water use. One type is in-stream use; this includes hydroelectric power, boating and swimming, for example. While in-stream activities do not use up the water, they can degrade the water quality through pollution. The other type of water use is the withdrawal of water, and this classification includes household use, industry use, irrigation, livestock watering and thermal and nuclear power. Most withdrawals are consumptions, meaning that the activity uses the water and does not return it to the source.</p>
-    </div>
-    <div class="w3-third w3-container">
-      <p class="water3"></p>
-      <p class="water4"></p>
-    </div>
-  </div>
-
-  <div class="w3-row w3-padding-64">
-    <div class="w3-twothird w3-container">
-      <h1 class="w3-text-teal" style="font-family:Aldrich">THE STATISTICS SAY WHAT???</h1>
-      <p style="font-family:Aldrich">The statistics from the Organisation for Economic Co-operation and Development (OECD), as shown in the following graph, say that in 2004 the average Canadian used 1420 m 3 of water. That is equal to the amount that would flow from your kitchen tap if you left it running for almost three months! Among the countries that are OECD members, Canada had the second greatest consumption per capita, second only to the United States, where the average person used 1730 m 3 of water! The numbers that are given in the following graph include water consumption for agricultural and industrial operations, as well as for residential use.</p>
-    </div>
-    <div class="w3-third w3-container">
-     <p class="water5"></p>
-      <p class=" water6 "></p>
-    </div>
-  </div>
-
-  <!-- Pagination -->
-  <div class="w3-center w3-padding-32">
-    <div class="w3-bar">
-
-    </div>
-  </div>
-
-  <footer id="myFooter">
-    <div class="w3-container w3-theme-l2 w3-padding-32">
-      <h4 style="font-family:Aldrich">A Data Mining based Model for Detection of
-Fraudulent Behaviour in Water Consumption</h4>
+    <div class="preloader">
+        <div class="loader_34">
+            <div class="ytp-spinner">
+                <div class="ytp-spinner-container">
+                    <div class="ytp-spinner-rotator">
+                        <div class="ytp-spinner-left">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                        <div class="ytp-spinner-right">
+                            <div class="ytp-spinner-circle"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="w3-container w3-theme-l1">
-      <p>Powered by <a href="https://www.safewater.org/fact-sheets-1/2017/1/23/water-consumption" target="_blank">waterconsumption.com @2019</a></p>
-    </div>
-  </footer>
+    <!--====== PRELOADER ENDS START ======-->
 
-<!-- END MAIN -->
-</div>
+    <!--====== HEADER PART START ======-->
 
-<script>
-// Get the Sidebar
-var mySidebar = document.getElementById("mySidebar");
+    <header id="home" class="header-area">
+        <div class="navigation fixed-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <nav class="navbar navbar-expand-lg">
+                            <a class="navbar-brand" href="index.html">
+							Water Consumption 2021
+                            </a> <!-- Logo -->
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
 
-// Get the DIV with overlay effect
-var overlayBg = document.getElementById("myOverlay");
+                            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                                <ul class="navbar-nav ml-auto">
+                                    <li class="nav-item active"><a class="page-scroll" href="#home">Home</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="{% url 'user_logins' %}">Login</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="{% url 'user_registers' %}">Registration</a></li>
+                                    <li class="nav-item"><a class="page-scroll" href="{% url 'admin_login' %}">Admin Panel</a></li>
+                                </ul>
+                            </div> <!-- navbar collapse -->
+                        </nav> <!-- navbar -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- navigation -->
 
-// Toggle between showing and hiding the sidebar, and add overlay effect
-function w3_open() {
-  if (mySidebar.style.display === 'block') {
-    mySidebar.style.display = 'none';
-    overlayBg.style.display = "none";
-  } else {
-    mySidebar.style.display = 'block';
-    overlayBg.style.display = "block";
-  }
-}
+        <div id="parallax" class="header-content d-flex align-items-center">
+            <div class="header-shape shape-one layer" data-depth="0.10">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-1.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-tow layer" data-depth="0.30">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-2.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-three layer" data-depth="0.40">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-3.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-fore layer" data-depth="0.60">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-2.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-five layer" data-depth="0.20">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-1.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-six layer" data-depth="0.15">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-4.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-seven layer" data-depth="0.50">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-5.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-eight layer" data-depth="0.40">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-3.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-nine layer" data-depth="0.20">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-6.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="header-shape shape-ten layer" data-depth="0.30">
+                <img src="https://specy.in/prj/assets/images/banner/shape/shape-3.png" alt="Shape">
+            </div> <!-- header shape -->
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-xl-5 col-lg-6">
+                        <div class="header-content-right">
+                            <h4 class="sub-title">Hello, </h4>
+                            <h1 class="title">Welcome</h1>
+                            <p>A  Data Mining based Model for Detection of Fraudulent Behaviour in Water Consumption</p>
+                            <a class="main-btn" href="{% url 'user_logins' %}">User Login</a>
+                        </div> <!-- header content right -->
+                    </div>
+                    <div class="col-lg-6 offset-xl-1">
+                        <div class=" d-none d-lg-block">
+                            <img src="https://ikea.today/wp-content/uploads/2019/03/PE133162_lowres.jpg" alt="hero">
+                        </div> <!-- header image -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+            <div class="header-social">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-12">
+                        </div>
+                    </div> <!-- row -->
+                </div> <!-- container -->
+            </div> <!-- header social -->
+        </div> <!-- header content -->
+    </header>
 
-// Close the sidebar with the close button
-function w3_close() {
-  mySidebar.style.display = "none";
-  overlayBg.style.display = "none";
-}
-</script>
+    <!--====== HEADER PART ENDS ======-->
+
+    <!--====== ABOUT PART START ======-->
+
+    <section id="about" class="about-area pt-125 pb-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center">
+                        <h2 class="title">Water Consumption</h2>
+                        <p>Water is an essential element for the uses of households,indu try, and agriculture. Jordan, as several other countries in the world, suffers from water scarcity, which poses a threat that would affect all sectors that depend on the availability of water for the sustainability of activities for their development and prosperity</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row --> <center><br><br>
+           <img src="https://upload.wikimedia.org/wikipedia/commons/c/c3/End_Uses_Pie_1.png" alt="hero"></center>
+                </div>
+    </section>
+
+    <!--====== ABOUT PART ENDS ======-->
+
+    <!--====== SERVICES PART START ======-->
+
+    <section id="service" class="services-area gray-bg pt-125 pb-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center pb-30">
+                        <h2 class="title">SAVE WATER</h2>
+                        <p>There are two ways in which we can classify our water use. One type is in-stream use; this includes hydroelectric power, boating and swimming, for example. While in-stream activities do not use up the water, they can degrade the water quality through pollution. The other type of water use is the withdrawal of water, and this classification includes household use, industry use, irrigation, livestock watering and thermal and nuclear power. Most withdrawals are consumptions, meaning that the activity uses the water and does not return it to the source.</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row --><center><br><br>
+           <img src="https://qph.fs.quoracdn.net/main-qimg-4d4768a17bae6607ea0a7f448a8f7ab9" alt="hero"></center>
+            
+        </div> <!-- container -->
+    </section>
+
+
+
+    <section id="analysis" class="about-area pt-125 pb-130">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <div class="section-title text-center">
+                        <h2 class="title">THE STATISTICS SAY WHAT???</h2>
+                        <p>The statistics from the Organisation for Economic Co-operation and Development (OECD), as shown in the following graph, say that in 2004 the average Canadian used 1420 m 3 of water. That is equal to the amount that would flow from your kitchen tap if you left it running for almost three months! Among the countries that are OECD members, Canada had the second greatest consumption per capita, second only to the United States, where the average person used 1730 m 3 of water! The numbers that are given in the following graph include water consumption for agricultural and industrial operations, as well as for residential use.</p>
+                    </div> <!-- section title -->
+                </div>
+            </div> <!-- row --> <center><br><br>
+           <img src="https://www.oecd.org/media/oecdorg/directorates/environmentdirectorate/water%20stress%20for%20web-01-800x411.jpg" alt="hero"></center>
+                </div>
+    </section>
+
+    <footer id="footer" class="footer-area">
+            <div class="container">
+                <div class="row justify-content-center">
+                 
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer widget -->
+        <div class="footer-copyright pb-20">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="copyright-text text-center pt-20">
+                            <p>Powered by WaterConsumption.com @2021 <a href="" rel="nofollow"></a></p>
+                        </div> <!-- copyright text -->
+                    </div>
+                </div> <!-- row -->
+            </div> <!-- container -->
+        </div> <!-- footer widget -->
+    </footer>
+<footer><center>
+
+</footer></center>
+
+
+    <!--====== jquery js ======-->
+    <script src="https://specy.in/prj/assets/js/vendor/modernizr-3.6.0.min.js"></script>
+    <script src="https://specy.in/prj/assets/js/vendor/jquery-1.12.4.min.js"></script>
+
+    <!--====== Bootstrap js ======-->
+    <script src="https://specy.in/prj/assets/js/bootstrap.min.js"></script>
+    <script src="https://specy.in/prj/assets/js/popper.min.js"></script>
+
+    <!--====== Magnific Popup js ======-->
+    <script src="https://specy.in/prj/assets/js/jquery.magnific-popup.min.js"></script>
+
+    <!--====== Parallax js ======-->
+    <script src="https://specy.in/prj/assets/js/parallax.min.js"></script>
+
+    <!--====== Counter Up js ======-->
+    <script src="https://specy.in/prj/assets/js/waypoints.min.js"></script>
+    <script src="https://specy.in/prj/assets/js/jquery.counterup.min.js"></script>
+
+
+    <!--====== Appear js ======-->
+    <script src="https://specy.in/prj/assets/js/jquery.appear.min.js"></script>
+
+    <!--====== Scrolling js ======-->
+    <script src="https://specy.in/prj/assets/js/scrolling-nav.js"></script>
+    <script src="https://specy.in/prj/assets/js/jquery.easing.min.js"></script>
+
+
+    <!--====== Main js ======-->
+    <script src="https://specy.in/prj/assets/js/main.js"></script>
 
 </body>
+
 </html>
