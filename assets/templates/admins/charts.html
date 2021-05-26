@@ -66,7 +66,7 @@ window.onload = function() {
 var chart = new CanvasJS.Chart("chartContainer", {
 	animationEnabled: true,
 	title: {
-		text: ""
+		text: "CHARTS"
 	},
 	data: [{
 	{% if chart_type == "bar" %}
@@ -81,7 +81,7 @@ var chart = new CanvasJS.Chart("chartContainer", {
 		indexLabel: "{label} {y}",
 		dataPoints: [
 		{% for o in form %}
-			{y: {{o.dcount}}, label: "{{o.branches}}"},
+			{y: {{o.dcount}}, label: "{{o.topics}}"},
 		{% endfor %}
 		]
 	}]

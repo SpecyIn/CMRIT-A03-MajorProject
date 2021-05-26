@@ -74,7 +74,24 @@ def negativefeedbacktivechart(request,chart_type):
 
 
 def charts(request,chart_type):
+    dd = {}
+    pos,neu,neg =0,0,0
+    poss=None
+    topic = Userfeedback_Model.objects.values('topics').annotate(dcount=Count('topics')).order_by('-dcount')
+    for t in topic:
+        topics=t['topics']
+        pos_count=Userfeedback_Model.objects.filter(topics=topics).values('sentiment').annotate(topiccount=Count('topics'))
+        poss=pos_count
+        for pp in pos_count:
+            senti= pp['sentiment']
+            if senti == 'positive':
+                pos= pp['topiccount']
+            elif senti == 'negative':
+                neg = pp['topiccount']
+            elif senti == 'nutral':
+                neu = pp['topiccount']
+        dd[topics]=[pos,neg,neu]
     chart = Userfeedback_Model.objects.values('topics').annotate(dcount=Count('sentiment'))
 
-    return render(request,"admins/charts.html", {'form':chart, 'chart_type':chart_type})
+    return render(request,"admins/charts.html", {'form':chart, 'chart_type':chart_type,'object':topic,'dd':dd,})
 
